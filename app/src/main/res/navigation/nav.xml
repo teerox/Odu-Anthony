@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/filterFragment">
+
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.example.anthonyodu.screens.filter.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter" >
+        <action
+            android:id="@+id/action_filterFragment_to_allFilter"
+            app:destination="@id/allFilter" />
+    </fragment>
+    <fragment
+        android:id="@+id/allFilter"
+        android:name="com.example.anthonyodu.screens.carowner.CarOwnerFragment"
+        android:label="fragment_all_filter"
+        tools:layout="@layout/fragment_all_filter" >
+        <argument
+            android:name="Filterlist"
+            app:argType="com.example.anthonyodu.model.Filter" />
+    </fragment>
+</navigation>
