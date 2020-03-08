@@ -11,20 +11,22 @@ import kotlinx.serialization.internal.*
 
 typealias FilterArray = ArrayList<Filter>
 
+
 @Parcelize
-@Serializable
 data class Filter (
     val id: String,
     val avatar: String,
     val fullName: String,
     val createdAt: String,
-    val gender: Gender,
-    val colors: List<Color>,
-    val countries: List<Country>
+    val gender: String,
+    val colors: List<String>,
+    val countries: List<String>
 ):Parcelable
 
+
+@Parcelize
 @Serializable(with = Color.Companion::class)
-enum class Color(val value: String) {
+enum class Color(val value: String):Parcelable {
     Aquamarine("Aquamarine"),
     Blue("Blue"),
     Green("Green"),
@@ -59,8 +61,9 @@ enum class Color(val value: String) {
     }
 }
 
+
 @Serializable(with = Country.Companion::class)
-enum class Country(val value: String) {
+enum class Country(val value: String){
     China("China"),
     Colombia("Colombia"),
     Estonia("Estonia"),
@@ -88,6 +91,7 @@ enum class Country(val value: String) {
         }
     }
 }
+
 
 @Serializable(with = Gender.Companion::class)
 enum class Gender(val value: String) {

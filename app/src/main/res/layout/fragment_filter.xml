@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".screens.filter.FilterFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <data>
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/filter_list_item"
-        tools:orientation="vertical" />
+        android:background="@drawable/background"
+        android:layout_height="match_parent"
+        tools:context=".screens.filter.FilterFragment">
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/allFilter"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/filter_list_item"
+            tools:orientation="vertical" />
+
+        <me.ibrahimsn.lib.CirclesLoadingView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:circleRadius="8dp"
+            app:circleMargin="8dp"
+            app:animDistance="10dp"
+            app:animDuration="500"
+            android:id="@+id/progressbar"
+            android:layout_gravity="center"
+            app:animDelay="150"
+            app:animInterpolator="accelerateDecelerate"
+         />
+
+    </FrameLayout>
+</layout>
