@@ -2,6 +2,7 @@ package com.example.anthonyodu
 
 import android.content.Context
 import androidx.annotation.VisibleForTesting
+import com.example.anthonyodu.datasource.CarOwnerLocalSource
 import com.example.anthonyodu.datasource.FilterRemoteDataSource
 import com.example.anthonyodu.repository.DefaultFilterRepository
 import com.example.anthonyodu.repository.FilterRepository
@@ -21,10 +22,14 @@ object ServiceLocator
     }
 
     private fun createFilterRepository(): FilterRepository {
-        val newRepository = DefaultFilterRepository(FilterRemoteDataSource())
+        val newRepository = DefaultFilterRepository(FilterRemoteDataSource(), createLocalDataSource())
 
         filterRepoInterface = newRepository
         return newRepository
+    }
+
+    private fun createLocalDataSource():CarOwnerLocalSource{
+        return CarOwnerLocalSource()
     }
 
 

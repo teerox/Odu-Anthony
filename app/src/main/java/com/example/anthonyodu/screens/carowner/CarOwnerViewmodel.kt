@@ -7,14 +7,14 @@ import androidx.lifecycle.ViewModel
 import com.example.anthonyodu.download.Download
 import com.example.anthonyodu.model.CarOwnerList
 import com.example.anthonyodu.model.Filter
-import com.example.anthonyodu.screens.carowner.FilterManager
+import com.example.anthonyodu.repository.FilterRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.File
 
-class CarOwnerViewModel(private val mydata: Filter):ViewModel(){
+class CarOwnerViewModel(var filterRepository: FilterRepository, var allData:Filter):ViewModel(){
 
     private val absoluteFile by lazy {
         File(
@@ -41,14 +41,25 @@ class CarOwnerViewModel(private val mydata: Filter):ViewModel(){
             _isDbAvailable.value = false
 
         } else {
-            val filterManager = FilterManager()
             uiScope.launch {
-                val fileList = filterManager.readFile(absoluteFile)
-                _filterResult.value = filterManager.filter(fileList, mydata)
+                _filterResult.value = filterFile(allData)
             }
             _isDbAvailable.value = true
         }
 
-
     }
+
+
+    private suspend fun readFile():CarOwnerList{
+           return filterRepository.readFile(absoluteFile)
+    }
+
+
+
+    private suspend fun filterFile(data:Filter):CarOwnerList{
+        val fileList = readFile()
+        return filterRepository.filter(fileList,data)
+    }
+
+
 }

@@ -4,14 +4,9 @@ package com.example.anthonyodu.screens.carowner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.anthonyodu.model.Filter
+import com.example.anthonyodu.repository.FilterRepository
 
-class CarOwnerViewModelFactory(private val dataSource: Filter) : ViewModelProvider.Factory {
-    @Suppress("unchecked_cast")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(CarOwnerViewModel::class.java)) {
-            return CarOwnerViewModel(dataSource) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
+class CarOwnerViewModelFactory(private var tasksrepository:FilterRepository, private var data:Filter):ViewModelProvider.NewInstanceFactory(){
+    override fun <T : ViewModel?> create(modelClass: Class<T>) = (CarOwnerViewModel(tasksrepository,data) as T)
 }
 
