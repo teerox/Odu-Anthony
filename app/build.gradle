@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.anthonyodu"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -85,6 +85,13 @@ dependencies {
     //Loading Bar
     implementation 'com.github.ibrahimsn98:CirclesLoadingView:1.0'
 
+    //Download Library
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
 
+    //CSV parser library
+    implementation 'de.siegmar:fastcsv:1.0.3'
 
+    //Download indicator library
+    //Animation dependency
+    implementation 'com.airbnb.android:lottie:3.3.1'
 }

@@ -17,14 +17,14 @@ class FilterRemoteDataSource(private var ioDispatcher:CoroutineDispatcher = Disp
     private val apiService = MyRetrofitBuilder.provideMovieApi()
 
     override fun getAll(): MutableLiveData<FilterArray>? {
-        //var data = listOf<FilterArray>()
+        var data = arrayListOf<Filter>()
         val filter: MutableLiveData<FilterArray>? = MutableLiveData()
 
         //val allFilter = apiService.getAllFilterAsync().await().result
         val call = apiService.getAllFilterAsync()
         call.enqueue(object : Callback, retrofit2.Callback<FilterArray> {
             override fun onFailure(call: Call<FilterArray>, t: Throwable) {
-                filter?.value = null
+                filter?.value = data
                     }
 
             override fun onResponse(call: Call<FilterArray>, response: Response<FilterArray>) {

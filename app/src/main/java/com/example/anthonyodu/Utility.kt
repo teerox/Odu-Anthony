@@ -5,13 +5,17 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import com.example.anthonyodu.model.Color
+import com.google.android.material.snackbar.Snackbar
 
-class Utility {
+object Utility {
 
+     const val MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 1
 
     //@SuppressLint("ResourceType")
     fun colourGet(color: String, context: Context):Drawable?{
@@ -59,20 +63,8 @@ class Utility {
         }
     }
 
-    fun isNetworkAvailable(context: Context): Boolean? {
 
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork = cm.activeNetworkInfo
-        if (activeNetwork != null) {
-            if (activeNetwork.type == ConnectivityManager.TYPE_WIFI) {
-                return true
-            } else if (activeNetwork.type == ConnectivityManager.TYPE_MOBILE) {
-                return true
-            }
-        } else {
-            return false
-        }
-        return false
-    }
+
+
 
 }
