@@ -12,7 +12,7 @@ import com.example.anthonyodu.model.CarOwner
 import com.example.anthonyodu.model.CarOwnerList
 
 class CarOwnerAdapter(var context: Context, private var myArrayList: CarOwnerList):RecyclerView.Adapter<CarOwnerAdapter.ViewHolder>(){
-    class ViewHolder(var binding:CarOwnerListItemBinding):RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(var binding: CarOwnerListItemBinding):RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item:CarOwner){
            binding.carOwnerItem = item

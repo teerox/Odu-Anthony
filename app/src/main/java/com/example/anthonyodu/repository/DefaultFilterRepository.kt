@@ -18,9 +18,5 @@ class DefaultFilterRepository(private var taskRemoteDataSource: FilterRemoteData
         return taskLocalDataSource.readFile(absoluteFile)
     }
 
-    override suspend fun filter(list: CarOwnerList, criteria: Filter): CarOwnerList {
-        return taskLocalDataSource.filter(list,criteria)
-         }
-
 
 }

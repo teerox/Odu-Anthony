@@ -43,8 +43,6 @@ class FilterRemoteDataSource():FilterDataSource<FilterArray> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun filter(list: CarOwnerList, criteria: Filter): CarOwnerList {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
 
 }

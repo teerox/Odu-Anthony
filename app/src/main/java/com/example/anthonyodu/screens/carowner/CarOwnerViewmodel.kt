@@ -4,6 +4,8 @@ import android.os.Environment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.anthonyodu.Utility
+import com.example.anthonyodu.datasource.CarOwnerLocalSource
 import com.example.anthonyodu.download.Download
 import com.example.anthonyodu.model.CarOwnerList
 import com.example.anthonyodu.model.Filter
@@ -13,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.File
+import javax.inject.Inject
 
 class CarOwnerViewModel(var filterRepository: FilterRepository, var allData:Filter):ViewModel(){
 
@@ -58,7 +61,7 @@ class CarOwnerViewModel(var filterRepository: FilterRepository, var allData:Filt
 
     private suspend fun filterFile(data:Filter):CarOwnerList{
         val fileList = readFile()
-        return filterRepository.filter(fileList,data)
+        return Utility.filter(fileList,data)
     }
 
 

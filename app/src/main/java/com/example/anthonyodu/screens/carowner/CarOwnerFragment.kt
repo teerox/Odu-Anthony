@@ -45,6 +45,7 @@ class CarOwnerFragment : Fragment() {
         val carOwnerViewModel by viewModels<CarOwnerViewModel>{
             CarOwnerViewModelFactory((requireContext().applicationContext as App).filterRepoInterface,args )
         }
+
         carOwnerViewModel.filterResult.observe(viewLifecycleOwner, Observer {
             filterResult->
             arrayUser.addAll(filterResult)
@@ -56,6 +57,12 @@ class CarOwnerFragment : Fragment() {
             Snackbar.make(binding.root,total.toString(), Snackbar.LENGTH_LONG).show()
         })
 
+        carOwnerViewModel.isDbAvailable.observe(viewLifecycleOwner, Observer {
+            if(!it){
+                Snackbar.make(binding.root,"No List Available", Snackbar.LENGTH_LONG).show()
+
+            }
+        })
 
         return binding.root
     }

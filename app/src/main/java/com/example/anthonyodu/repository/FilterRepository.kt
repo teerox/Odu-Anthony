@@ -12,6 +12,6 @@ interface FilterRepository {
 
     suspend fun readFile(absoluteFile: File): CarOwnerList
 
-    suspend fun filter(list: CarOwnerList,criteria: Filter):CarOwnerList
+
 
 }

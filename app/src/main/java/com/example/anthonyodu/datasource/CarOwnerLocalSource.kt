@@ -14,8 +14,9 @@ import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
+import javax.inject.Inject
 
-class CarOwnerLocalSource():FilterDataSource<CarOwnerList> {
+class CarOwnerLocalSource:FilterDataSource<CarOwnerList> {
     override fun getAll(): MutableLiveData<CarOwnerList>? {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -61,45 +62,6 @@ class CarOwnerLocalSource():FilterDataSource<CarOwnerList> {
         return result
     }
 
-    @SuppressLint("DefaultLocale")
-    override suspend fun filter(list: CarOwnerList, criteria: Filter): CarOwnerList {
-        val result = CarOwnerList()
-        withContext(Dispatchers.IO) {
-            for (i in 0 until list.size) {
-                //if (list[i].year.toLong() in criteria.start_year..criteria.end_year) {
-                if ((criteria.gender.capitalize() == list[i].gender.capitalize())
-                    or (criteria.gender.isEmpty())
-                ) {
-                    if ((list[i].country.capitalize() in criteria.countries.map { it.capitalize() })
-                        or criteria.countries.isEmpty()
-                    ) {
-                        if ((list[i].carColor.capitalize() in criteria.colors.map { it.capitalize() })
-                            or criteria.colors.isEmpty()
-                        ) {
-                            result.add(
-                                CarOwner(
-                                    list[i].id,
-                                    // R.drawable.car1,
-                                    list[i].firstName,
-                                    list[i].lastName,
-                                    list[i].email,
-                                    list[i].country,
-                                    list[i].carModel,
-                                    list[i].year,
-                                    list[i].carColor,
-                                    list[i].gender,
-                                    list[i].jobTitle,
-                                    list[i].bio
-                                )
-                            )
-                        }
-                    }
-                    // }
-                }
-            }
-        }
-        return result
 
-    }
 
 }
