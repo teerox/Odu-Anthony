@@ -4,25 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-    <variable
-        name="myFirstView"
-        type="com.example.anthonyodu.screens.filter.FilterViewModel" />
+
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:background="@drawable/background"
         android:layout_height="match_parent"
-        tools:context=".screens.filter.FilterFragment">
+        tools:context=".screens.carowner.CarOwnerFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:id="@+id/allFilter"
-            android:layout_height="wrap_content"
+            android:id="@+id/carOwnerRecy"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/filter_list_item"
-            tools:orientation="vertical" />
-
+            tools:listitem="@layout/car_owner_list_item"
+            android:layout_height="match_parent" />
         <me.ibrahimsn.lib.CirclesLoadingView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,11 +26,11 @@
             app:circleMargin="8dp"
             app:animDistance="10dp"
             app:animDuration="500"
-            android:id="@+id/progressbar"
+            android:id="@+id/progressbar2"
             android:layout_gravity="center"
             app:animDelay="150"
             app:animInterpolator="accelerateDecelerate"
-         />
+            />
 
     </FrameLayout>
 </layout>

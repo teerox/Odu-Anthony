@@ -9,7 +9,7 @@ typealias CarOwnerList = ArrayList<CarOwner>
 @Parcelize
 data class CarOwner(
     val id: Long,
-    val image: Int,
+    //val image: Int,
     val firstName: String,
     val lastName: String,
     val email: String,

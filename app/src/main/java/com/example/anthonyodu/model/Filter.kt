@@ -8,15 +8,16 @@ import kotlinx.android.parcel.Parcelize
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 import kotlinx.serialization.internal.*
+import javax.inject.Inject
 
 typealias FilterArray = ArrayList<Filter>
 
 
 @Parcelize
-data class Filter (
+data class Filter @Inject constructor(
     val id: String,
     val avatar: String,
-    val fullName: String,
+    val fullName:  String,
     val createdAt: String,
     val gender: String,
     val colors: List<String>,
